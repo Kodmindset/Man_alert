@@ -1,0 +1,42 @@
+const {By, Key, Builder}= require("selenium-webdriver");
+require("chromedriver");
+let a= b+c;
+
+b=5;
+c=3;
+console.log(a)
+async function test_case(){
+
+    //create driver
+    let driver = await new Builder().forBrowser("chrome").build;
+
+    //send driver to website
+await driver.get("https://github.com/");
+
+//grab element from the webpage
+await driver.findElement(By.partialLinkText("sign in")).click();
+
+//displays the tittle
+console.log(driver.getTittle());
+
+//if the title is not correct end the test
+if(await driver.getTittle()==="Sign in to GitHub . GitHub"){
+    console.log("Test #1 success")
+}else{
+    console.log("Test #2 success")
+    return;
+}
+
+//input and user password and ussername
+await driver.findElement(By.name("login")).sendKeys("SteamCode");
+await driver.findElement(By.name("paasword")).sendKeys("**********", Key.RETURN);
+if(await driver.findElement(By.className("flash-close js-flash-close")).isDisplayed()){
+    console.log("Test #2 success")
+}
+
+// setInterval(function(){
+driver.quit();
+//  },10000)
+
+}
+test_case();

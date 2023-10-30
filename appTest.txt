@@ -1,0 +1,47 @@
+const {By, Key, Builder} = require ("selenium-webdriver");
+require("chromedriver");
+
+async function test_case() {
+try {
+// Create a new driver instance for Chrome
+let driver = await new Builder().forBrowser("chrome").build();
+// Navigate to the website
+await driver.get("https://app.manduu.work/account/stafflogin");
+
+// Wait for the element to be visible and clickable
+// let staffLogin = await driver.wait(driver.findElement(By.partialLinkText("Staff Login")), 10000);
+// console.log(staffLogin)
+// // Click on the element
+// await staffLogin.click();
+
+// Find the search box element by name
+let searchBox = await driver.findElement(By.name("userNameOrEmailAddress"));
+setTimeout(function() {
+    // Focus on the element
+    searchBox.focus();
+    }, 100);
+console.log(searchBox)
+
+let pass = await driver.findElement(By.name("password"));
+console.log(pass)
+// Click on the search box element
+await searchBox.click();
+// Send "username" and return key to the search box
+await searchBox.sendKeys("admin@manduu.work", Key.RETURN);
+// Click on the pass element
+await pass.click();
+// Send "password" and return key to the pass element
+await pass.sendKeys("Manduu.123!", Key.RETURN);
+
+// Quit the driver after 10 seconds
+setTimeout(() => {
+driver.quit();
+}, 10000);
+} catch (error) {
+// Handle any errors or exceptions
+console.error(error);
+}
+}
+
+// Call the test_case function
+test_case();
