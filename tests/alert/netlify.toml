@@ -1,0 +1,11 @@
+[build]
+command = "node server.js"
+publish = "public"  # If you have static files to serve, specify the directory here
+
+[[plugins]]
+package = "@netlify/plugin-next"
+
+[context.production.environment]
+YOUR_SLACK_CHANNEL_ID = "C060G14N3UK"
+TEST_SLACK_ID = "C060HJRHDC7"
+SLACK_BOT_TOKEN = "xoxb-2041212478179-6010157515522-lbUWmpmxKshNWrubHRDnZ9Ae"
