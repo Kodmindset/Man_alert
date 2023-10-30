@@ -1,7 +1,8 @@
 {
-  "name": "tut",
+  "name": "nodejs",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -9,12 +10,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chromedriver": "^116.0.0",
-    "geckodriver": "^4.2.1",
-    "selenium-webdriver": "^4.13.0"
+    "@slack/bolt": "^3.14.0",
+    "@slack/web-api": "^6.9.0",
+    "@types/node": "^18.0.6",
+    "axios": "^1.5.1",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "node-fetch": "^3.2.6"
   },
-  "directories": {
-    "test": "tests"
-  },
-  "description": ""
+  "devDependencies": {
+    "concurrently": "^8.2.1"
+  }
 }

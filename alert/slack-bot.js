@@ -1,9 +1,9 @@
 // slack-bot.js
 const { WebClient } = require('@slack/web-api');
 
-const slackBotToken = process.env['SLACK_BOT_TOKEN'];
-const slackChannelId = process.env['YOUR_SLACK_CHANNEL_ID'];
-const testChannelId = ('C060HJRHDC7');
+const slackBotToken = 'xoxb-2041212478179-6010157515522-lbUWmpmxKshNWrubHRDnZ9Ae';
+const slackChannelId = "C060G14N3UK";
+const testChannelId = 'C060HJRHDC7';
 
 const slackClient = new WebClient(slackBotToken);
 
