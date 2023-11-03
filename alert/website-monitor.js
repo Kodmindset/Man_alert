@@ -1,5 +1,5 @@
 const https = require('https');
-const { sendSlackAlert } = require('./slack-bot');
+const { sendEmailAlert } = require('./slack-bot'); // Import the sendEmailAlert function
 
 const websiteUrl_Client = 'client.manduu.work';
 const websiteUrl = 'app.manduu.work';
@@ -20,10 +20,10 @@ function checkWebsiteStatus() {
 
     if (responseTime > 1000) {
       const currentTime = Date.now();
-      if (currentTime - lastAlertTime > 3600000) {
-        let alertMessage = `HTTP Status Code: ${res.statusCode}\nResponse Time: ${responseTime} ms\nHigh Server Load Detected\nMessage sent to Slack at ${new Date(currentTime).toLocaleString()}`;
-        console.log(alertMessage);
-        sendSlackAlert(alertMessage); // Send a comprehensive alert message to Slack
+      if (currentTime - lastAlertTime > 3600) {
+        let emailSubject = 'Website Alert';
+        let emailMessage = `HTTP Status Code: ${res.statusCode}\nResponse Time: ${responseTime} ms\nHigh Server Load Detected\nMessage sent at ${new Date(currentTime).toLocaleString()}`;
+        sendEmailAlert(emailSubject, emailMessage); // Send an email alert
         lastAlertTime = currentTime;
       }
     }
@@ -31,10 +31,9 @@ function checkWebsiteStatus() {
 
   req.on('error', (err) => {
     const currentTime = Date.now();
-    if (currentTime - lastAlertTime > 3600000) {
+    if (currentTime - lastAlertTime > 3600) {
       const errorMessage = `Server Status: Offline\nError: ${err.message}`;
-      console.error(errorMessage);
-      sendSlackAlert(errorMessage); // Send an alert with the error message
+      sendEmailAlert('Server Offline Alert', errorMessage); // Send an email alert with the error message
       lastAlertTime = currentTime;
     }
   });
