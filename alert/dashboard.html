@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Alert Dashboard</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <header>
+        <h1>Server Alert Dashboard</h1>
+    </header>
+    <main>
+        <section id="status">
+            <h2>Server Status</h2>
+            <p id="serverStatus">Checking...</p>
+        </section>
+        <section id="alerts">
+            <h2>Recent Alerts</h2>
+            <ul id="alertList">
+                <!-- Recent alerts will be displayed here -->
+            </ul>
+        </section>
+        <section id="slackMessages">
+            <h2>Slack Messages</h2>
+            <ul id="slackMessageList">
+                <!-- Slack messages will be displayed here -->
+            </ul>
+        </section>
+    </main>
+    <script src="dashboard.js"></script> <!-- Link to your JavaScript file -->
+</body>
+</html>
